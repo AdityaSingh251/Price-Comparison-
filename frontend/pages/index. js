@@ -1,0 +1,26 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+
+export default function Home() {
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-96">
+        <h1 className="text-2xl font-bold mb-4">Price Comparison</h1>
+        <input
+          className="border w-full p-2 mb-4"
+          placeholder="Search product"
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button
+          className="bg-black text-white w-full p-2"
+          onClick={() => router.push(`/results?q=${query}`)}
+        >
+          Compare Prices
+        </button>
+      </div>
+    </div>
+  );
+}
